@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design Your Backyard - Garden Inspiration & Ideas</title>
+  <style>
+    /* Reset and base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #ecf8f1 0%, #d3e8ce 100%);
+      color: #3b4a2a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    header {
+      background-color: #2f4f2d;
+      color: #f0f5ea;
+      padding: 1.4rem 3rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background-color 0.3s ease;
+    }
+    header:hover {
+      background-color: #264626;
+    }
+    header h1 {
+      font-weight: 900;
+      font-size: 2.4rem;
+      letter-spacing: 2px;
+      user-select: none;
+      margin-bottom: 0.3rem;
+      font-family: 'Playfair Display', serif;
+      color: #e3ebd8;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    nav {
+      margin-top: 6px;
+    }
+    nav a {
+      color: #bcd3b1;
+      text-decoration: none;
+      margin-right: 2rem;
+      font-weight: 600;
+      font-size: 1.15rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      transition: background-color 0.35s ease, color 0.35s ease;
+      box-shadow: inset 0 0 0 0 transparent;
+      user-select: none;
+      cursor: pointer;
+    }
+    nav a:hover, nav a.active {
+      color: #1a3201;
+      background-color: #a0be83;
+      box-shadow: inset 0 0 8px 3px #8caf71;
+      font-weight: 700;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 1140px;
+      width: 90%;
+      margin: 3rem auto 5rem auto;
+      background: rgba(255 255 255 / 0.96);
+      padding: 3.5rem 4.5rem 4rem 4.5rem;
+      border-radius: 16px;
+      box-shadow: 0 15px 50px rgba(34,65,12,0.22);
+      font-size: 1.28rem;
+      line-height: 1.85;
+      color: #36491d;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      scroll-margin-top: 80px; /* for anchor navigation and sticky header */
+    }
+    footer {
+      background-color: #2f4f2d;
+      color: #ced8bf;
+      text-align: center;
+      padding: 1.6rem;
+      font-size: 1rem;
+      user-select: none;
+      font-weight: 400;
+      box-shadow: 0 -2px 14px rgba(0,0,0,0.12);
+    }
+    h2 {
+      color: #30451b;
+      font-size: 2.3rem;
+      margin-bottom: 1.25rem;
+      font-family: 'Playfair Display', serif;
+      border-bottom: 4px solid #9dc57a;
+      padding-bottom: 0.45rem;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+    p {
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.03em;
+      font-weight: 500;
+    }
+    ul {
+      margin-left: 1.8rem;
+      margin-bottom: 2.1rem;
+      list-style-type: square;
+      color: #3d531a;
+      font-weight: 550;
+    }
+    ul li {
+      padding: 0.47rem 0;
+    }
+    /* Gallery styles */
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+    }
+    .gallery-item {
+      background: #f3faf0;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(34,65,12,0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 36px rgba(34,65,12,0.25);
+    }
+    .gallery-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-bottom: 4px solid #9dc57a;
+      display: block;
+    }
+    .gallery-content {
+      padding: 1rem 1.4rem 1.5rem 1.4rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #405925;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.04em;
+    }
+    .gallery-description {
+      font-weight: 500;
+      color: #536b32;
+      flex-grow: 1;
+      line-height: 1.4;
+    }
+    /* Contact form styles */
+    form {
+      max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+    }
+    label {
+      margin-top: 1.15rem;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+      color: #4b6720;
+      font-size: 1.12rem;
+      letter-spacing: 0.03em;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      font-family: inherit;
+      font-size: 1.12rem;
+      padding: 0.75rem 1.05rem;
+      border: 2px solid #98ba7c;
+      border-radius: 10px;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+      color: #2f3f11;
+      background: #f7fcf3;
+      box-shadow: 0 1.5px 6px rgba(3,45,12,0.07);
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #678931;
+      background-color: #f9fff7;
+      box-shadow: 0 0 10px #a2bb7fcc;
+    }
+    textarea {
+      min-height: 130px;
+      line-height: 1.4;
+    }
+    button {
+      margin-top: 1.85rem;
+      background-color: #3a6713;
+      border: none;
+      color: #eaf1d8;
+      font-weight: 700;
+      font-size: 1.28rem;
+      padding: 1rem 1.65rem;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.35s ease;
+      align-self: start;
+      box-shadow: 0 5.5px 15px rgba(53,99,20,0.75);
+      user-select: none;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+    }
+    button:hover,
+    button:focus {
+      background-color: #315912;
+      box-shadow: 0 8px 22px rgba(42,77,14,0.92);
+      outline: none;
+    }
+    /* Hero image styles */
+    .hero-image {
+      width: 100%;
+      max-height: 430px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-bottom: 2.3rem;
+      box-shadow: 0 12px 52px rgba(30,58,12,0.22);
+      filter: drop-shadow(4px 5px 7px rgb(38 80 19 / 0.2));
+      transition: transform 0.3s ease;
+    }
+    .hero-image:hover {
+      transform: scale(1.03);
+    }
+    /* Section spacing */
+    section {
+      margin-bottom: 3.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main {
+        width: 95%;
+        padding: 2.5rem 3rem 3rem 3rem;
+      }
+      nav a {
+        margin-right: 1.4rem;
+        font-size: 1rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.95rem;
+        border-bottom-width: 3px;
+      }
+      button {
+        font-size: 1.1rem;
+        padding: 0.88rem 1.4rem;
+      }
+    }
+    @media (max-width: 520px) {
+      main {
+        padding: 1.6rem 2rem 2.8rem 2rem;
+      }
+      nav a {
+        font-size: 1rem;
+        margin-right: 1rem;
+      }
+      header h1 {
+        font-size: 1.7rem;
+      }
+      .hero-image {
+        max-height: 300px;
+      }
+      h2 {
+        font-size: 1.65rem;
+      }
+      button {
+        font-size: 1rem;
+        padding: 0.75rem 1.25rem;
+      }
+      #gallery {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+      .gallery-image {
+        height: 200px;
+      }
+    }
+    /* Success message styling */
+    .success-message {
+      margin-top: 1.7rem;
+      padding: 1.3rem;
+      background-color: #d2f0c9;
+      border: 2px solid #5d930f;
+      border-radius: 14px;
+      color: #36650f;
+      font-weight: 600;
+      max-width: 540px;
+      font-size: 1.18rem;
+      user-select: none;
+      box-shadow: 0 0 23px #8caf4677 inset;
+    }
+  </style>
+  <link href="https://i.ytimg.com/vi/UYI9QemSjLQ/maxresdefault.jpg" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>Design Your Backyard</h1>
+    <nav aria-label="Primary navigation">
+      <a href="#home" class="nav-link active" aria-current="page" tabindex="0">Home</a>
+      <a href="#terms" class="nav-link" tabindex="-1">Terms</a>
+      <a href="#privacy" class="nav-link" tabindex="-1">Privacy</a>
+      <a href="#contact" class="nav-link" tabindex="-1">Contact</a>
+    </nav>
+  </header>
+  <main id="content" role="main" tabindex="-1">
+    <!-- Home page content -->
+    <section id="home" tabindex="-1">
+      <img src="https://cdn.mos.cms.futurecdn.net/TrQw2sz9LojxfVSbWgJgSH.jpg" alt="Serene backyard garden with lush green plants and stone path" class="hero-image" />
+      <h2>Welcome to Design Your Backyard</h2>
+      <p>Unleash your creativity with our expert tips and inspirations to turn your outdoor space into a lush, relaxing haven. Whether you're working with a small patio or a sprawling garden, our tailored ideas are designed to help you craft the backyard of your dreams.</p>
+      <p>Explore innovative landscaping designs, choose the perfect plants for your climate, and learn sustainable gardening practices to nurture your oasis year-round.</p>
+      <ul>
+        <li>Inspiring garden layouts for all sizes</li>
+        <li>Plant guides for vibrant and healthy backyards</li>
+        <li>DIY garden projects and stylish outdoor décor</li>
+        <li>Eco-friendly tips for sustainable gardening</li>
+        <li>Seasonal maintenance advice to keep life blossoming</li>
+      </ul>
+      <p>Begin your backyard transformation with Design Your Backyard — where nature meets style and serenity.</p>
+    </section>
+
+    <!-- New About Us Section -->
+    <section id="about-us" tabindex="-1">
+      <h2>About Us</h2>
+      <p>At Design Your Backyard, we believe every outdoor space has the potential to be a breathtaking sanctuary. Our team is passionate about gardening, landscaping, and sustainable outdoor living.</p>
+      <p>We provide carefully curated content to inspire both novice and experienced gardeners to create beautiful, functional, and eco-friendly backyards. Our mission is to empower you with knowledge, creativity, and confidence to design and maintain your ideal outdoor retreat.</p>
+      <p>From plant selection tips to innovative design ideas and hands-on DIY projects, Design Your Backyard is your trusted companion in crafting green spaces that enhance your lifestyle and well-being.</p>
+    </section>
+
+    <!-- Additional section: Our Mission -->
+    <section id="our-mission" tabindex="-1">
+      <h2>Our Mission</h2>
+      <p>We strive to help people connect with nature, promoting sustainable gardening practices that protect the environment and enrich lives. We foster a community of backyard enthusiasts dedicated to creating vibrant, sustainable, and welcoming outdoor spaces.</p>
+      <p>Through well-researched guides, stunning visuals, and practical advice, Design Your Backyard is dedicated to making gardening accessible, enjoyable, and rewarding for everyone.</p>
+    </section>
+
+    <!-- New Inspiration Gallery Section -->
+    <section id="gallery-section" tabindex="-1">
+      <h2>Inspiration Gallery</h2>
+      <div id="gallery" aria-label="Gallery of backyard gardening inspiration images">
+        <article class="gallery-item" tabindex="0">
+          <img src="https://cdn.shopify.com/s/files/1/0593/3265/7306/files/011-9570_Get_Creative_with_Furniture_1024x1024.jpg?v=1727287091" alt="Colorful flower garden with a small stone path" class="gallery-image" />
+          <div class="gallery-content">
+            <h3 class="gallery-title">Colorful Flower Beds</h3>
+            <p class="gallery-description">Brighten your backyard with thoughtfully arranged flower beds that bloom in abundance through seasons.</p>
+          </div>
+        </article>
+        <article class="gallery-item" tabindex="0">
+          <img src="https://www.thespruce.com/thmb/2CZj_qXXDbJDeZN-OZqoMpExgfQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/bypsychcurvingbeds-5312f1fdfd2d4376bb13589fde716b8d.jpg" alt="Modern backyard with wooden decking and stylish garden furniture" class="gallery-image" />
+          <div class="gallery-content">
+            <h3 class="gallery-title">Modern Outdoor Living</h3>
+            <p class="gallery-description">Create a sleek, modern backyard lounge area perfect for relaxing or entertaining guests in style.</p>
+          </div>
+        </article>
+        <article class="gallery-item" tabindex="0">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf5T-oW0XPaK_EKFM7-ImU8PcRcoUxFFGAvQ&s" alt="Serene backyard pond with lush greenery and stones" class="gallery-image" />
+          <div class="gallery-content">
+            <h3 class="gallery-title">Tranquil Water Features</h3>
+            <p class="gallery-description">Incorporate ponds or small waterfalls to add peaceful sounds and a calming visual centerpiece to your garden.</p>
+          </div>
+        </article>
+        <article class="gallery-item" tabindex="0">
+          <img src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2018/08/0503010020-11-Connect-Home-Nature.jpg" alt="Vertical garden wall with various green plants" class="gallery-image" />
+          <div class="gallery-content">
+            <h3 class="gallery-title">Vertical Gardens</h3>
+            <p class="gallery-description">Utilize vertical space with lush green walls or trellises filled with climbing plants for a unique look.</p>
+          </div>
+        </article>
+        <article class="gallery-item" tabindex="0">
+          <img src="https://static01.nyt.com/images/2013/04/07/magazine/mag-07KeyBackyard-t_CA0/mag-07KeyBackyard-t_CA0-articleLarge.jpg?quality=75&auto=webp&disable=upscale" alt="Backyard vegetable garden with fresh green produce" class="gallery-image" />
+          <div class="gallery-content">
+            <h3 class="gallery-title">Edible Gardens</h3>
+            <p class="gallery-description">Grow your own delicious fruits, vegetables, and herbs to enjoy fresh and organic produce at home.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Terms page content -->
+    <section id="terms" tabindex="-1">
+      <h2>Website Terms of Use</h2>
+      <p>Welcome to Design Your Backyard. By accessing and using this website, you agree to comply with the following terms and conditions:</p>
+      <ul>
+        <li><strong>Use of Content:</strong> All content provided on this website is for informational purposes only, owned by Design Your Backyard, and protected by copyright.</li>
+        <li><strong>Intellectual Property:</strong> Unauthorized reproduction or distribution of any site content is prohibited.</li>
+        <li><strong>User Conduct:</strong> Users agree not to misuse the website or engage in any harmful activities.</li>
+        <li><strong>Limitation of Liability:</strong> Design Your Backyard is not liable for damages resulting from the use of site information.</li>
+        <li><strong>Changes to Terms:</strong> Terms may be updated without prior notice; continued use implies acceptance.</li>
+      </ul>
+      <p>If you disagree with these terms, please refrain from using the website.</p>
+    </section>
+    <!-- Privacy page content -->
+    <section id="privacy" tabindex="-1">
+      <h2>Privacy Policy</h2>
+      <p>At Design Your Backyard, your privacy is paramount. This policy outlines how we collect, use, and safeguard your information.</p>
+      <ul>
+        <li><strong>Information Collection:</strong> We only collect the information you provide directly, such as through our contact form.</li>
+        <li><strong>Usage:</strong> Your data is used solely to respond to inquiries or provide requested assistance.</li>
+        <li><strong>Security:</strong> We employ measures to protect your information from unauthorized access.</li>
+        <li><strong>No Third-Party Sharing:</strong> We do not sell or share your personal information with external entities.</li>
+        <li><strong>Cookies:</strong> Minimal cookies are used to enhance browsing experience without tracking personal data.</li>
+      </ul>
+      <p>Using this website indicates your consent to this policy.</p>
+    </section>
+    <!-- Contact page content -->
+    <section id="contact" tabindex="-1">
+      <h2>Contact Us</h2>
+      <p>Questions, feedback, or stories from your own backyard? Reach out to us — we'd love to hear from you!</p>
+      <form id="contact-form" novalidate>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required aria-required="true" />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required aria-required="true" />
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required aria-required="true"></textarea>
+        <button type="submit" aria-label="Send your message">Send Message</button>
+      </form>
+      <div id="form-success" class="success-message" style="display:none;" role="alert" aria-live="polite">
+        Thank you for contacting us! We will get back to you shortly.
+      </div>
+    </section>
+  </main>
+  <footer>
+ 
+  <h2>Contact Us</h2>
+  <p>456 Elm Street<br>
+  Springfield, IL 62704<br>
+  USA</p>
+  <p> Contact : +1-393-323-2292<p/>
+  <p>For inquiries, please reach out to us at <a href="mailto:info@designyourbackyard.com">info@designyourbackyard.com</a> or call us at (555) 123-4567. We look forward to assisting you!</p>
+
+
+    &copy; 2024 Design Your Backyard. All rights reserved.
+  </footer>
+  <script>
+    // Smooth scrolling navigation with active link highlighting
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = [...document.querySelectorAll('main section[id]')];
+
+    function getOffsetTop(elem) {
+      const rect = elem.getBoundingClientRect();
+      return rect.top + window.pageYOffset;
+    }
+
+    function setActiveLink() {
+      let index = sections.length;
+      while (--index && window.pageYOffset + 90 < getOffsetTop(sections[index])) {}
+      navLinks.forEach(link => link.classList.remove('active'));
+      if (navLinks[index]) {
+        navLinks[index].classList.add('active');
+      }
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.focus();
+          window.scrollTo({
+            top: targetSection.offsetTop - 70, // offset for sticky header
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', setActiveLink);
+
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+      contactForm.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
